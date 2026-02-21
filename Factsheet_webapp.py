@@ -11,6 +11,31 @@ from fpdf import FPDF
 st.set_page_config(page_title="Strategy Dashboard", layout="wide")
 st.title("📊 Strategy Performance Dashboard")
 
+# --- 1. PASSWORD PROTECTION ---
+def check_password():
+    """Returns True if the user had the correct password."""
+    if "password_correct" not in st.session_state:
+        st.session_state["password_correct"] = False
+
+    if st.session_state["password_correct"]:
+        return True
+
+    # Show login UI
+    st.title("🔒 Confidential Access")
+    password = st.text_input("Enter Password", type="password")
+    if st.button("Login"):
+        # SET YOUR PASSWORD HERE
+        if password == st.secrets["APP_PASSWORD"]:
+        #if password == "Flex2026!":
+
+            st.session_state["password_correct"] = True
+            st.rerun()
+        else:
+            st.error("😕 Password incorrect")
+    return False
+
+if not check_password():
+    st.stop()  # Stop the script here if not logged in
 
 # --- 2. PDF GENERATION LOGIC ---
 class StrategyPDF(FPDF):
@@ -190,3 +215,5 @@ if st.sidebar.button("🛠️ Prepare PDF Report"):
         file_name=f"{selected_strat}_Report.pdf",
         mime="application/pdf"
     )
+
+st.success("Access Granted")
