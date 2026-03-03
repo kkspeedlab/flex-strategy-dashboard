@@ -105,7 +105,7 @@ def create_pdf(strategy_name, stats, nav_plot_buf, pivot_table):
 
 
 # --- 5. DATA LOADING ---
-@st.cache_data
+@st.cache_data(ttl=600)
 def load_data(uploaded_file=None):
     filename = "All_strategies_monthly_percentages.xlsx"
     sheet_name = "Monthly_returns"
@@ -238,3 +238,4 @@ if st.sidebar.button("🛠️ Prepare PDF Report"):
     )
 
 st.success(f"Access Granted: {user_role.upper()} View") 
+
