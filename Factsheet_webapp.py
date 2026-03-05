@@ -15,7 +15,7 @@ st.title("📊 Strategy Performance Dashboard")
 STRATEGY_GROUPS = {
     "admin": "all",
     "manager": [
-        "Wealth strategy", "Crypto LS", "BTC defencive", "ETh defencive", "BTC", "ETH",
+        "Wealth strategy", "Crypto LS", "BTC defencive", "ETH defencive", "BTC", "ETH",
         "Commodities", "Equities", "Equities Euro Hedged", "Hedge Funds",
         "Hedge Funds Euro Hedged", "Fixed Income", "Indices", "Stocks", "AI Equities",
         "SMA Crypto", "ARC Euro Cautious PCI", "Equities_CDNE", "Equities_CDNE_Euro_Hedged"
@@ -238,4 +238,5 @@ if st.sidebar.button("🛠️ Prepare PDF Report"):
     )
 
 st.success(f"Access Granted: {user_role.upper()} View") 
+
 
